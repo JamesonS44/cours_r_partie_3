@@ -4,7 +4,35 @@ title: "cours_r_partie_3"
 
 ```{r}
 library(readr)
-library()
-velos <- read.csv("velos.csv")
+df_velos <- read_delim("data/velos.csv", delim = ";")
+```
+
+# 2. 
+```{r}
+df_b_788 <- df_velos[df_velos$`Numéro de boucle`==788,]
+df_b_677 <- df_velos[df_velos$`Numéro de boucle`==677,]
+
+df_d_1110 <- df_velos[df_velos$Jour=="2025-10-11",]
+df_d_1113 <- df_velos[df_velos$Jour=="2025-10-13",]
+df_b_677$`Probabilité de présence d'anomalies`
+
+```
+
+# 3. 
+
+```{r}
+filtre_anomalie <- function(df_entree){
+  liste <- c("Forte", "Faible")
+  
+  df_propre <- df_entree[ !(df_entree$`Probabilité de présence d'anomalies` %in% liste), ]
+  return(df_propre)
+}
+
+df_b_677_p <- filtre_anomalie(df_b_677)
+df_b_788_p <- filtre_anomalie(df_b_788)
+
+df_d_1110_p <- filtre_anomalie(df_d_1110)
+df_d_1113_p <- filtre_anomalie(df_d_1113)
+
 ```
 
