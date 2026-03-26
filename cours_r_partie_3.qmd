@@ -4,6 +4,7 @@ title: "cours_r_partie_3"
 
 ```{r}
 library(readr)
+library(tidyverse)
 df_velos <- read_delim("data/velos.csv", delim = ";")
 ```
 
@@ -48,5 +49,20 @@ compter_nombre_trajets(df_b_788_p)
 compter_nombre_trajets(df_d_1110_p)
 compter_nombre_trajets(df_d_1113_p)
 
+```
+
+# 5.
+
+```{r}
+compter_nombre_boucle <- function(df_entree){
+  nb_boucle <- df_entree |> 
+    distinct(`Numéro de boucle`) |> 
+    nrow()
+  return(nb_boucle)
+}
+compter_nombre_boucle(df_b_677_p)
+compter_nombre_boucle(df_b_788_p)
+compter_nombre_boucle(df_d_1110_p)
+compter_nombre_boucle(df_d_1113_p)
 ```
 
