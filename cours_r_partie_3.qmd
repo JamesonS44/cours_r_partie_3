@@ -2,10 +2,9 @@
 title: "cours_r_partie_3"
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
 ```{r}
-1 + 1
+library(readr)
+library()
+velos <- read.csv("velos.csv")
 ```
+
