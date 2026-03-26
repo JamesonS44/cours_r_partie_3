@@ -66,3 +66,26 @@ compter_nombre_boucle(df_d_1110_p)
 compter_nombre_boucle(df_d_1113_p)
 ```
 
+# 6.
+
+```{r}
+trouver_trajet_max <- function(df_entree){
+  max_total <- which.max(df_entree$Total)
+  
+  nom_boucle <- df_entree$`Boucle de comptage`[max_total]
+  jour_max <- df_entree$Jour[max_total]
+  valeur_max <- df_entree$Total[max_total]
+  
+  liste <- list(
+    nom = nom_boucle,
+    jour = jour_max,
+    valeur = valeur_max
+  )
+  return(liste)
+}
+trouver_trajet_max(df_b_677_p)
+trouver_trajet_max(df_b_788_p)
+trouver_trajet_max(df_d_1110_p)
+trouver_trajet_max(df_d_1113_p)
+```
+
