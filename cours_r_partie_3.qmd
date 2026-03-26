@@ -36,3 +36,17 @@ df_d_1113_p <- filtre_anomalie(df_d_1113)
 
 ```
 
+# 4.
+
+```{r}
+compter_nombre_trajets <- function(df_entree){
+  nb_trajets <- sum(df_entree$Total)
+  return(nb_trajets)
+}
+compter_nombre_trajets(df_b_677_p)
+compter_nombre_trajets(df_b_788_p)
+compter_nombre_trajets(df_d_1110_p)
+compter_nombre_trajets(df_d_1113_p)
+
+```
+
