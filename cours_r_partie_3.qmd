@@ -89,3 +89,45 @@ trouver_trajet_max(df_d_1110_p)
 trouver_trajet_max(df_d_1113_p)
 ```
 
+# 7.
+
+```{r}
+trouver_trajet_max(df_velos)
+```
+Les valeurs sont aberrantes et ne correspondent pas à la réalité. Il y a un problème dans le jeu de donnée sur certaines lignes.
+```{r}
+df_velos_trie <- df_velos |> 
+  arrange(desc(Total))
+df_velos_trie$Total
+
+filtre_anomalie_2 <- function(df_entree){
+  liste <- c("Forte", "Faible")
+  df_propre <- df_entree[ !(df_entree$`Probabilité de présence d'anomalies` %in% liste), ]
+  df_propre <- subset(df_entree, Total < 10000)
+  return(df_propre)
+}
+
+df_b_677_f <- filtre_anomalie_2(df_b_677)
+df_b_788_f <- filtre_anomalie_2(df_b_788)
+df_d_1110_f <- filtre_anomalie_2(df_d_1110)
+df_d_1113_f <- filtre_anomalie_2(df_d_1113)
+df_velos_f <- filtre_anomalie_2(df_velos)
+
+trouver_trajet_max(df_velos_f)
+```
+
+# 8.
+
+```{r}
+calcul_distribution_semaine <- function(df_entree) {
+  df_propre <- df_entree |> 
+    group_by(`Jour de la semaine`) |> 
+    summarise(Total_Jour = sum(Total, na.rm = TRUE)) |> 
+    arrange(Total_Jour)
+  
+  return(df_propre)
+}
+calcul_distribution_semaine(df_velos_f)
+```
+
+
